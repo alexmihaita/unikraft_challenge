@@ -1,0 +1,25 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment folders
+virtual_env/
+env/
+ENV/
+.env/
+
+# dotenv environment variables file (if you want to keep it secret)
+.env
+
+# IDE files
+.vscode/
+.idea/
+
+# Mac system files
+.DS_Store
+
+# Test coverage
+htmlcov/
+coverage.xml
+*.cover
