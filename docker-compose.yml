@@ -1,5 +1,13 @@
-version: '3.8'
 services:
+  app:
+    image: mihaitadevdocker/unikraft_challenge-app
+    container_name: movie_api_remote
+    ports:
+      - "6060:6060"
+    depends_on:
+      - mysql
+    env_file:
+      - .env
   mysql:
     image: mysql:8
     container_name: movie_db_container
@@ -12,6 +20,19 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+  grafana:
+    image: grafana/grafana
+    container_name: movie_grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=root
+      - GF_SECURITY_ADMIN_PASSWORD=root
+    depends_on:
+      - mysql
 
 volumes:
   mysql_data:
+  grafana_data:

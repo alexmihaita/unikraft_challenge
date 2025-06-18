@@ -1,19 +1,29 @@
 import os
 import pymysql
-from fastapi import FastAPI
+from fastapi import FastAPI, Path
 from dotenv import load_dotenv
 
-load_dotenv(dotenv_path=r"E:\PythonProjects\unikraft_challenge\.env")
-
+# load_dotenv(dotenv_path=r"E:\PythonProjects\unikraft_challenge\.env")
+#load_dotenv(dotenv_path="./.env")  # Adjust the path as necessary
 
 app = FastAPI()
 
+# def get_connection():
+#     return pymysql.connect(
+#         host=os.getenv("DB_HOST"),
+#         user=os.getenv("DB_USER"),
+#         password=os.getenv("DB_PASSWORD"),
+#         db=os.getenv("DB_NAME"),
+#         cursorclass=pymysql.cursors.DictCursor
+#     )
+
 def get_connection():
     return pymysql.connect(
-        host=os.getenv("DB_HOST"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        db=os.getenv("DB_NAME"),
+        host="mysql",
+        user="root",
+        port=3306,
+        password="root",
+        db="movie_db",
         cursorclass=pymysql.cursors.DictCursor
     )
 
